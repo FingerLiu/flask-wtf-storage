@@ -9,7 +9,6 @@ setup(
     install_requires=[
         'Flask',
         'Jinja2',
-        'Werzeug',
         'WTForms',
         'Flask_WTF',
         'google-cloud',
