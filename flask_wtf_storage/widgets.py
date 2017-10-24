@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from collections.abc import Iterable
-from wtforms.widgets import html_params
+from wtforms.widgets import html_params, HTMLString
 
 
 class FileDisplayWidget(object):
@@ -24,4 +24,4 @@ class FileDisplayWidget(object):
                 params = dict(kwargs, href=link)
                 html.append(u'<li ><a %s>%s</li>' % (html_params(**params), link))
         html.append(u'</ul>')
-        return u''.join(html)
+        return HTMLString(u''.join(html))
