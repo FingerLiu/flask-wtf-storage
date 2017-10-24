@@ -21,7 +21,8 @@ class FileDisplayWidget(object):
             html.append(u'<li><a %s>%s</li>' % (html_params(**params), data))
         else:
             for link in data:
-                params = dict(href=link)
-                html.append(u'<li ><a %s>%s</li>' % (html_params(**params), link))
+                if link:
+                    params = dict(href=link)
+                    html.append(u'<li ><a %s>%s</li>' % (html_params(**params), link))
         html.append(u'</ul>')
         return HTMLString(u''.join(html))
