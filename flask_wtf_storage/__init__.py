@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from .fields import FileField, MultipleFileField
+from .fields import FileField, MultipleFileField, FileDisplayField
 from .forms import StorageForm
 from .utils import upload_file
 
