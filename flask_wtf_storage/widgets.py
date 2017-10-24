@@ -16,13 +16,14 @@ class FileDisplayWidget(object):
         kwargs.setdefault('id', field.id)
         html = [u'<ul %s>' % html_params(id=field.id)]
         data = field.data
-        if not isinstance(data, Iterable):
-            params = dict(href=data)
-            html.append(u'<li><a %s>%s</li>' % (html_params(**params), data))
-        else:
-            for link in data:
-                if link:
-                    params = dict(href=link)
-                    html.append(u'<li ><a %s>%s</li>' % (html_params(**params), link))
+        if data:
+            if not isinstance(data, Iterable):
+                params = dict(href=data)
+                html.append(u'<li><a %s>%s</li>' % (html_params(**params), data))
+            else:
+                for link in data:
+                    if link:
+                        params = dict(href=link)
+                        html.append(u'<li ><a %s>%s</li>' % (html_params(**params), link))
         html.append(u'</ul>')
         return HTMLString(u''.join(html))
