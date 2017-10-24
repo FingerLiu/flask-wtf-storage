@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from collections.abc import Iterable
-from wtforms.widgets import TextInput, html_params
+from wtforms.widgets import html_params
 
 
 class FileDisplayWidget(object):
@@ -18,7 +18,7 @@ class FileDisplayWidget(object):
         data = field.data
         if not isinstance(data, Iterable):
             params = dict(kwargs, href=data)
-            html.append(u'<li ><a %s>%s</li>' % (html_params(**params), data))
+            html.append(u'<li><a %s>%s</li>' % (html_params(**params), data))
         else:
             for link in data:
                 params = dict(kwargs, href=link)
