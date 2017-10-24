@@ -80,4 +80,4 @@ class MultipleFileField(CustomFileField):
 
 
 class FileDisplayField(Field):
-    widget = FileDisplayWidget
+    widget = FileDisplayWidget()
