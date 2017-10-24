@@ -17,11 +17,11 @@ class FileDisplayWidget(object):
         html = [u'<ul %s>' % html_params(id=field.id)]
         data = field.data
         if not isinstance(data, Iterable):
-            params = dict(kwargs, href=data)
+            params = dict(href=data)
             html.append(u'<li><a %s>%s</li>' % (html_params(**params), data))
         else:
             for link in data:
-                params = dict(kwargs, href=link)
+                params = dict(href=link)
                 html.append(u'<li ><a %s>%s</li>' % (html_params(**params), link))
         html.append(u'</ul>')
         return HTMLString(u''.join(html))
