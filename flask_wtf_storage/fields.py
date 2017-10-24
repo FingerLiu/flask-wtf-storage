@@ -3,9 +3,11 @@
 
 from flask import current_app
 from wtforms import widgets
+from wtforms import Field
 from werkzeug.datastructures import FileStorage
 from flask_wtf.file import FileField as _FileField
 
+from .widgets import FileDisplayWidget
 from .utils import upload_file
 
 
@@ -75,3 +77,7 @@ class MultipleFileField(CustomFileField):
             return names
         else:
             raise NotImplementedError
+
+
+class FileDisplayField(Field):
+    widget = FileDisplayWidget
