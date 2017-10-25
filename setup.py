@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='flask-wtf-storage',
-    version='0.0.1',
+    version='0.0.2',
     keywords=["flask", "wtf", "storage", "google storage"],
     description='extend flask-wtf to use google storage',
     license='MIT License',
