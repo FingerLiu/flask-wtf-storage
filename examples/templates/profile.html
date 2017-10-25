@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}profile{% endblock %}
+
+{% block page_content %}
+
+<form action="" method="post" class="form" role="form">
+    {{ form.csrf_token }}
+    <div class="con_info">
+        <dl>
+            <dt>personal apply :</dt>
+            <dd>
+                {{ form.personal_apply() }}
+            </dd>
+        </dl>
+        <dl>
+            <dt>business license:</dt>
+            <dd>
+                {{ form.business_license() }}
+            </dd>
+        </dl>
+    </div>
+</form>
+{% endblock %}

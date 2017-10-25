@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}register{% endblock %}
+
+{% block page_content %}
+
+<form action="" method="post" class="form" role="form" enctype="multipart/form-data">
+    {{ form.csrf_token }}
+    <div>
+        <dl>
+            <dt>personal apply :</dt>
+            <dd>
+                {{ form.personal_apply() }}
+                {% if form.personal_apply.errors %}
+                    <ul class="errors">
+                        {% for error in form.personal_apply.errors %}
+                        <li class="error">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </dd>
+        </dl>
+        <dl>
+            <dt>business license :</dt>
+            <dd>
+                {{ form.business_license() }}
+                {% if form.business_license.errors %}
+                    <ul class="errors">
+                        {% for error in form.business_license.errors %}
+                        <li class="error">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </dd>
+        </dl>
+    </div>
+    <div>{{ form.submit }}</div>
+</form>
+{% endblock %}
+
