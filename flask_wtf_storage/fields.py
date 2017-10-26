@@ -56,7 +56,7 @@ class MultipleFileField(CustomFileField):
     widget = FileInput(multiple=True)
 
     def process_formdata(self, valuelist):
-        valuelist = (x for x in valuelist if isinstance(x, FileStorage) and x)
+        valuelist = [x for x in valuelist if isinstance(x, FileStorage) and x]
         self.data = valuelist
 
     def upload(self):
