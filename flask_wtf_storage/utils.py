@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import os
 from datetime import datetime
 from google.cloud import storage
 from flask import current_app
 from flask_login import current_user
+from werkzeug.utils import secure_filename
 
 
 def build_filename(filename):
@@ -29,3 +31,12 @@ def upload_file(filename, file_stream):
     url = blob.public_url
     current_app.logger.debug('return of upload is %s', url)
     return url
+
+
+def upload_file2local(file):
+    # TODO add permission control logic
+    if file:
+        filename = secure_filename(file.filename)
+        file.save(os.path.join(current_app.config['UPLOAD_FOLDER'], filename))
+    current_app.logger.debug('return of upload2local is %s', filename)
+    return filename

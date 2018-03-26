@@ -8,7 +8,7 @@ from werkzeug.datastructures import FileStorage
 from flask_wtf.file import FileField as _FileField
 
 from .widgets import FileDisplayWidget
-from .utils import upload_file
+from .utils import upload_file, upload_file2local
 
 
 class FileInput(widgets.Input):
@@ -29,9 +29,9 @@ class FileInput(widgets.Input):
 
 
 class FileField(_FileField):
-    def __init__(self, storage_engine='GOOGLE_STORAGE', *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.storage_engine = storage_engine
+        self.storage_engine = current_app.config.get('STORAGE_ENGINE', 'GOOGLE_STORAGE')
 
     def upload(self):
         current_app.logger.info('start upload FileField %s', self.name)
@@ -43,6 +43,8 @@ class FileField(_FileField):
                 return url
             else:
                 return None
+        elif self.storage_engine == 'LOCAL':
+            return upload_file2local(self.data)
         else:
             raise NotImplementedError
 
