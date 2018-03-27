@@ -77,6 +77,16 @@ class MultipleFileField(CustomFileField):
                     name = upload_file(upload_name, stream)
                     names.append(name)
             return names
+        elif self.storage_engine == 'LOCAL':
+            data = self.data
+            if not data:
+                return []
+            names = []
+            for f in data:
+                current_app.logger.debug('f in data %s', f.filename)
+                names.append(upload_file2local(f))
+            return names
+
         else:
             raise NotImplementedError
 

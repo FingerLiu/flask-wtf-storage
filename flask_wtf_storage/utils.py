@@ -39,4 +39,4 @@ def upload_file2local(file):
         filename = secure_filename(file.filename)
         file.save(os.path.join(current_app.config['UPLOAD_FOLDER'], filename))
     current_app.logger.debug('return of upload2local is %s', filename)
-    return filename
+    return '/upload/' + filename
