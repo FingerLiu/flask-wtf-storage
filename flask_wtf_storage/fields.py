@@ -63,8 +63,9 @@ class MultipleFileField(CustomFileField):
 
     def upload(self):
         current_app.logger.info('start upload MultipleFileField %s', self.name)
+        storage_engine = current_app.config.get('STORAGE_ENGINE', 'GOOGLE_STORAGE')
         # current_app.logger.info('data %s', self.data)
-        if self.storage_engine == 'GOOGLE_STORAGE':
+        if storage_engine == 'GOOGLE_STORAGE':
             data = self.data
             if not data:
                 return []
@@ -77,7 +78,7 @@ class MultipleFileField(CustomFileField):
                     name = upload_file(upload_name, stream)
                     names.append(name)
             return names
-        elif self.storage_engine == 'LOCAL':
+        elif storage_engine == 'LOCAL':
             data = self.data
             if not data:
                 return []
