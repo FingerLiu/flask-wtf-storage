@@ -14,7 +14,8 @@ class FileDisplayWidget(object):
         self.text = text
 
     def get_filename(self, name):
-        return '-'.join(name.split('/')[-1].split('-')[1:])
+        # return '-'.join(name.split('/')[-1].split('-')[1:])
+        return '-'.join(name.split())
 
     def __call__(self, field, **kwargs):
         kwargs.setdefault('id', field.id)
