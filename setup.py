@@ -11,7 +11,7 @@ setup(
         'Jinja2',
         'WTForms',
         'Flask_WTF',
-        'google-cloud',
+        'google-cloud<0.34.0',
     ],
 
     author='liupeng',
